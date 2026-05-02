@@ -1,0 +1,156 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Reservation {
+  id   String @id @default(cuid())
+  code String @unique // PA-XXXXXX visible al cliente
+
+  // Cliente
+  customerName  String
+  customerEmail String
+  customerPhone String // formato +54...
+
+  // Fechas
+  pickupDate DateTime
+  pickupHour String // "06:00"
+  returnDate DateTime
+
+  // Domicilio (legacy: se usaba con el modelo puerta a puerta. Ahora es opcional)
+  pickupAddress      String?
+  pickupNeighborhood String?
+  pickupLat          Float?
+  pickupLng          Float?
+
+  // Vehiculo
+  vehicleType  VehicleType
+  vehicleModel String
+  vehiclePlate String
+  vehicleColor String?
+
+  // Pricing (todo en centavos para evitar floats)
+  daysCount        Int
+  pricePerDay      Int
+  logisticsPrice   Int
+  vehicleSurcharge Int
+  totalAmount      Int
+
+  // Estado
+  status ReservationStatus @default(PENDING_PAYMENT)
+
+  // Pago
+  paymentId       String?
+  paymentStatus   PaymentStatus?
+  paymentMethod   String?
+  paidAt          DateTime?
+  preferenceId    String? // ID de preferencia MP
+
+  // Tracking interno
+  internalNotes String?
+  pickedUpAt    DateTime?
+  returnedAt    DateTime?
+
+  // Token publico para "Mi reserva"
+  publicToken String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  events ReservationEvent[]
+
+  @@index([status])
+  @@index([pickupDate])
+  @@index([customerEmail])
+}
+
+model ReservationEvent {
+  id            String      @id @default(cuid())
+  reservationId String
+  reservation   Reservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+  type          EventType
+  description   String
+  metadata      Json?
+  createdAt     DateTime    @default(now())
+
+  @@index([reservationId])
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BlockedDate {
+  id        String   @id @default(cuid())
+  date      DateTime @unique @db.Date
+  reason    String?
+  createdAt DateTime @default(now())
+}
+
+model Settings {
+  id String @id @default("singleton")
+
+  // Pricing en centavos. Multiplicadores como Int (120 = 1.20x) para evitar floats.
+  pricePerDay      Int @default(400000) // $4.000
+  logisticsPrice   Int @default(0) // legacy (modelo puerta a puerta), 0 en el modelo actual
+  multiplierChico  Int @default(100) // 1.00x
+  multiplierMedio  Int @default(120) // 1.20x
+  multiplierSuv    Int @default(140) // 1.40x
+
+  // Cochera (modelo actual: el cliente trae el auto a nuestra cochera)
+  cocheraAddress String @default("Próximamente — zona cercana al Aeropuerto Islas Malvinas")
+  cocheraHours   String @default("24/7")
+
+  // Legacy del modelo puerta a puerta. Quedan por compatibilidad pero no se usan.
+  coverageRadiusKm Int   @default(20)
+  airportLat       Float @default(-32.9036)
+  airportLng       Float @default(-60.7850)
+
+  whatsappNumber String @default("+5493410000000")
+  contactEmail   String @default("hola@parkaway.com.ar")
+  companyName    String @default("ParkAway")
+  companyCuit    String @default("")
+
+  updatedAt DateTime @updatedAt
+}
+
+enum VehicleType {
+  CHICO
+  MEDIANO
+  SUV
+}
+
+enum ReservationStatus {
+  PENDING_PAYMENT
+  CONFIRMED
+  PICKED_UP
+  IN_PARKING
+  RETURNING
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  REFUNDED
+}
+
+enum EventType {
+  STATUS_CHANGE
+  NOTE
+  NOTIFICATION_SENT
+  PAYMENT_UPDATE
+}

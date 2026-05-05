@@ -10,8 +10,8 @@ export function Footer() {
           <div className="md:col-span-2">
             <Logo />
             <p className="mt-4 text-sm text-ink-400 max-w-sm text-pretty">
-              Cochera privada a 5 minutos del Aeropuerto Islas Malvinas. Dejá
-              el auto, viajá tranquilo, lo retirás cuando volvés.
+              Cochera privada a 5 minutos del Aeropuerto Islas Malvinas. Dejás
+              el auto, te llevamos a la terminal y te buscamos cuando volvés.
             </p>
           </div>
 

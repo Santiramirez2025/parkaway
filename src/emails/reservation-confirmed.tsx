@@ -103,9 +103,10 @@ export default function ReservationConfirmedEmail({
             </Heading>
             <Text style={s.paragraph}>
               El dia del viaje vas a la cochera con el auto a la hora
-              acordada. Te recibimos, te entregamos el comprobante y dejas
-              las llaves. Cuando aterrices y vuelvas, retiras el auto en el
-              mismo lugar.
+              acordada. Te recibimos, te entregamos el comprobante, dejas
+              las llaves y te llevamos al aeropuerto. Cuando aterrices y
+              vuelvas, te pasamos a buscar por la terminal y te traemos a
+              retirar el auto en la cochera.
             </Text>
 
             <Section style={{ textAlign: "center", margin: "24px 0 8px" }}>

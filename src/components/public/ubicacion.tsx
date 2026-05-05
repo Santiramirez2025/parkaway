@@ -41,9 +41,9 @@ export function Ubicacion({ cocheraAddress, cocheraHours }: Props) {
               </span>
             </h2>
             <p className="mt-4 text-lg text-ink-500 text-pretty max-w-md">
-              Llegás, dejás el auto, y en menos de 10 minutos estás haciendo
-              check-in. Cuando volvés, retirás cuando quieras: atendemos las
-              24 horas.
+              Llegás a la cochera, dejás el auto y te acercamos a la terminal:
+              en menos de 10 minutos estás haciendo check-in. Cuando volvés,
+              te buscamos en el aeropuerto. Atendemos las 24 horas.
             </p>
 
             <div className="mt-8 flex items-center gap-3 text-sm text-ink-500">

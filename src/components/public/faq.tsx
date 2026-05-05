@@ -19,16 +19,20 @@ export function Faq({ cocheraAddress, cocheraHours }: Props) {
       a: `${cocheraAddress}. Estamos a 5 minutos del Aeropuerto Islas Malvinas. En la sección Ubicación tenés un botón de "Cómo llegar" que te abre Google Maps directo.`,
     },
     {
+      q: "¿Cómo es el traslado al aeropuerto?",
+      a: "Cuando llegás a la cochera con el auto, te recibimos, lo guardamos bajo techo y te llevamos a la terminal. El traslado está incluido en el precio: no pagás extra.",
+    },
+    {
+      q: "¿Cómo me buscan cuando vuelvo?",
+      a: "Cuando aterrices, nos avisás por WhatsApp y te pasamos a buscar al aeropuerto. Te traemos a la cochera para que retires tu auto. También está incluido en el precio.",
+    },
+    {
       q: "¿Atienden 24/7?",
-      a: `${cocheraHours}. Podés dejar y retirar el auto a cualquier hora. Si tu vuelo aterriza de madrugada, no hay drama: hay alguien siempre.`,
+      a: `${cocheraHours}. Podés dejar el auto y volver a buscarlo a cualquier hora. Si tu vuelo aterriza de madrugada, no hay drama: hay alguien siempre.`,
     },
     {
       q: "¿Tengo que coordinar el horario para dejarlo?",
-      a: "Sí, en la reserva elegís el día y horario en el que vas a llegar a la cochera. Eso nos ayuda a tener todo listo y darte la atención sin esperas. Si te atrasás un poco no pasa nada, escribinos por WhatsApp.",
-    },
-    {
-      q: "¿Qué pasa si llego tarde a retirar el auto?",
-      a: "Ningún problema. La cochera atiende todo el tiempo y tu auto te espera. Si tu vuelo se atrasa, no necesitás avisar: cuando aterrices, venís y lo retirás.",
+      a: "Sí, en la reserva elegís el día y horario en el que vas a llegar a la cochera. Eso nos ayuda a tener el traslado listo y salir sin esperas hacia el aeropuerto. Si te atrasás un poco no pasa nada, escribinos por WhatsApp.",
     },
     {
       q: "¿Mi auto está realmente seguro?",
@@ -36,7 +40,7 @@ export function Faq({ cocheraAddress, cocheraHours }: Props) {
     },
     {
       q: "¿Qué pasa si mi vuelo se atrasa o se adelanta?",
-      a: "Tranqui. Como atendemos 24/7, retirás el auto cuando puedas. No hay penalidad ni costo extra por demora.",
+      a: "Tranqui. Como atendemos 24/7, te buscamos cuando aterrices. Avisanos por WhatsApp con el cambio y coordinamos. No hay penalidad ni costo extra por demora.",
     },
     {
       q: "¿Cómo se paga?",
@@ -44,7 +48,7 @@ export function Faq({ cocheraAddress, cocheraHours }: Props) {
     },
     {
       q: "¿Cuánto sale?",
-      a: "El precio depende de la cantidad de días y el tipo de vehículo. Lo ves transparente en el simulador antes de pagar.",
+      a: "El precio depende de la cantidad de días y el tipo de vehículo, e incluye el traslado ida y vuelta al aeropuerto. Lo ves transparente en el simulador antes de pagar.",
     },
   ];
 

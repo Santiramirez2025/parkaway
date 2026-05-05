@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MousePointerClick, Warehouse, KeyRound } from "lucide-react";
+import { MousePointerClick, Warehouse, Plane } from "lucide-react";
 
 const steps = [
   {
@@ -14,16 +14,16 @@ const steps = [
   {
     icon: Warehouse,
     number: "02",
-    title: "Dejás el auto en la cochera",
+    title: "Dejás el auto y te llevamos",
     description:
-      "El día del viaje, traés el auto a nuestra cochera (a 5 min del aeropuerto). Te recibimos y te entregamos el comprobante.",
+      "El día del viaje traés el auto a nuestra cochera (a 5 min del aeropuerto). Lo cuidamos y te acercamos a la terminal.",
   },
   {
-    icon: KeyRound,
+    icon: Plane,
     number: "03",
-    title: "Volvés y lo retirás",
+    title: "Volvés y te buscamos",
     description:
-      "Cuando aterrices, pasás a buscarlo cuando quieras. Atendemos 24/7.",
+      "Cuando aterrices te pasamos a buscar al aeropuerto y te traemos a buscar tu auto. Atendemos 24/7.",
   },
 ];
 
@@ -39,8 +39,8 @@ export function HowItWorks() {
             </span>
           </h2>
           <p className="mt-4 text-lg text-ink-400 text-pretty">
-            Reservás, dejás el auto en la cochera y te volás tranquilo. Cuando
-            volvés, lo retirás cuando quieras.
+            Reservás, dejás el auto en la cochera y te llevamos al aeropuerto.
+            Cuando volvés, te pasamos a buscar.
           </p>
         </div>
 

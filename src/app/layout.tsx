@@ -21,15 +21,15 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
   title: {
-    default: "ParkAway · Estacionamiento puerta a puerta en Rosario",
+    default: "ParkAway · Cochera con traslado al aeropuerto en Rosario",
     template: "%s · ParkAway",
   },
   description:
-    "Olvidate del traslado al aeropuerto. Pasamos a buscar tu auto, lo cuidamos en cochera privada y te llevamos a la terminal. Aeropuerto Islas Malvinas, Rosario.",
+    "Dejás el auto en nuestra cochera privada, te llevamos al Aeropuerto Islas Malvinas y te buscamos cuando volvés. Atención 24/7 en Rosario.",
   keywords: [
     "estacionamiento aeropuerto rosario",
     "cochera aeropuerto islas malvinas",
-    "valet parking rosario",
+    "traslado aeropuerto rosario",
     "viajar tranquilo rosario",
   ],
   openGraph: {

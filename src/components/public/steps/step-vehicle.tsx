@@ -80,7 +80,7 @@ export function StepVehicle({ data, update, setValid, onAdvance }: Props) {
       <div>
         <h3 className="text-2xl font-semibold mb-1">Tu auto y tus datos</h3>
         <p className="text-sm text-ink-500">
-          Necesitamos saber qué auto retiramos y cómo contactarte.
+          Necesitamos saber qué auto cuidamos y cómo contactarte.
         </p>
       </div>
 

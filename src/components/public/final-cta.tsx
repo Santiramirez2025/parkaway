@@ -74,8 +74,8 @@ export function FinalCta() {
             </h2>
 
             <p className="mt-6 text-base md:text-lg text-ink-500 max-w-xl mx-auto text-pretty">
-              Reservás en 2 minutos, dejás el auto en la cochera y te volás
-              tranquilo.
+              Reservás en 2 minutos, dejás el auto en la cochera y te llevamos
+              al aeropuerto. Cuando volvés, te buscamos.
             </p>
 
             {/* CTA principal: TERRACOTA */}

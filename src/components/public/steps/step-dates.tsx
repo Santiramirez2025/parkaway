@@ -96,7 +96,7 @@ export function StepDates({ data, update, setValid, onAdvance }: Props) {
       <div>
         <h3 className="text-2xl font-semibold mb-1">¿Cuándo viajás?</h3>
         <p className="text-sm text-ink-500">
-          Indicanos cuando te buscamos y cuando volves.
+          Indicanos cuándo dejás el auto en la cochera y cuándo volvés.
         </p>
       </div>
 
@@ -210,8 +210,8 @@ export function StepDates({ data, update, setValid, onAdvance }: Props) {
       </div>
 
       <div className="text-xs text-ink-500 leading-relaxed bg-muted border border-ink-800 rounded-2xl p-4">
-        Pasamos a buscarte a la hora indicada. Te recomendamos coordinar al
-        menos 90 minutos antes de tu vuelo para llegar tranquilo.
+        Te llevamos al aeropuerto a la hora indicada. Te recomendamos coordinar
+        al menos 90 minutos antes de tu vuelo para llegar tranquilo.
       </div>
     </div>
   );

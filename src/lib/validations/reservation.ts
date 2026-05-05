@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { parseLocalDate, startOfToday } from "@/lib/utils";
 
 // Helpers
 const phoneRegex = /^\+?54\s?9?\s?\d{2,4}\s?\d{6,8}$/;
@@ -13,8 +14,8 @@ export const datesSchema = z
   })
   .refine(
     (data) => {
-      const pickup = new Date(data.pickupDate);
-      const ret = new Date(data.returnDate);
+      const pickup = parseLocalDate(data.pickupDate);
+      const ret = parseLocalDate(data.returnDate);
       return ret > pickup;
     },
     {
@@ -24,10 +25,8 @@ export const datesSchema = z
   )
   .refine(
     (data) => {
-      const pickup = new Date(data.pickupDate);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      return pickup >= today;
+      const pickup = parseLocalDate(data.pickupDate);
+      return pickup >= startOfToday();
     },
     {
       message: "El retiro no puede ser en el pasado",

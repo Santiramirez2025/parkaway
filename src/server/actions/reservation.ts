@@ -5,6 +5,8 @@ import { calculatePricing, calculateDays } from "@/lib/pricing";
 import {
   generateReservationCode,
   generatePublicToken,
+  parseLocalDate,
+  startOfToday,
 } from "@/lib/utils";
 import {
   createReservationSchema,
@@ -35,13 +37,11 @@ export async function createReservation(
   }
 
   const data = parsed.data;
-  const pickupDate = new Date(data.pickupDate);
-  const returnDate = new Date(data.returnDate);
+  const pickupDate = parseLocalDate(data.pickupDate);
+  const returnDate = parseLocalDate(data.returnDate);
 
   // Validar fechas
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  if (pickupDate < today) {
+  if (pickupDate < startOfToday()) {
     return { ok: false, error: "La fecha de retiro no puede ser en el pasado" };
   }
   if (returnDate <= pickupDate) {

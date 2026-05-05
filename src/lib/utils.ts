@@ -38,3 +38,19 @@ export function formatARS(cents: number): string {
 export function centsToPesos(cents: number): number {
   return Math.round(cents / 100);
 }
+
+// Parsea "YYYY-MM-DD" como medianoche en zona local. `new Date("2026-05-10")`
+// se interpreta como UTC y en GMT-3 da el dia anterior, lo que rompe la
+// validacion "el retiro no puede ser en el pasado" para el dia de hoy.
+export function parseLocalDate(s: string): Date {
+  const [y, m, d] = s.split("-").map(Number);
+  if (!y || !m || !d) return new Date(NaN);
+  return new Date(y, m - 1, d);
+}
+
+// Date object correspondiente a medianoche local del dia de hoy.
+export function startOfToday(): Date {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d;
+}

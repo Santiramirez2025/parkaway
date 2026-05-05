@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { parseLocalDate } from "@/lib/utils";
 
 interface Result {
   ok: boolean;
@@ -33,13 +34,10 @@ export async function blockDate(formData: FormData): Promise<Result> {
   }
 
   try {
-    const date = new Date(parsed.data.date);
+    const date = parseLocalDate(parsed.data.date);
     if (isNaN(date.getTime())) {
       return { ok: false, error: "Fecha invalida" };
     }
-
-    // Normalizar a medianoche
-    date.setHours(0, 0, 0, 0);
 
     await prisma.blockedDate.upsert({
       where: { date },

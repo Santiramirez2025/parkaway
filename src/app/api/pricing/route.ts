@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { calculatePricing, calculateDays } from "@/lib/pricing";
 import { pricingQuerySchema } from "@/lib/validations/reservation";
+import { parseLocalDate } from "@/lib/utils";
 
 export async function GET(request: Request) {
   try {
@@ -18,8 +19,8 @@ export async function GET(request: Request) {
       );
     }
 
-    const pickup = new Date(parsed.data.pickupDate);
-    const ret = new Date(parsed.data.returnDate);
+    const pickup = parseLocalDate(parsed.data.pickupDate);
+    const ret = parseLocalDate(parsed.data.returnDate);
 
     if (ret <= pickup) {
       return NextResponse.json(
